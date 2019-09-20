@@ -6,6 +6,10 @@ import (
 	"github.com/purplefox81/learning-go/stringutil"
 )
 
+const (
+	helloPrefix = "Hello, "
+)
+
 func main() {
 	fmt.Printf(Hello())
 	fmt.Println(ReverseHello())
@@ -13,7 +17,12 @@ func main() {
 
 // Hello returns a simple hello world message
 func Hello() string {
-	return "Hello, world"
+	return "Hello, Go!"
+}
+
+// HelloString returns a Hello plus the given string
+func HelloString(s string) string {
+	return helloPrefix + s
 }
 
 // ReverseHello reverse a given hello world message
