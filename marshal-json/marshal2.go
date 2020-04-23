@@ -95,4 +95,8 @@ func main() {
 	}
 	fmt.Printf("marshalled json: %v \n\n", string(bjson))
 
+	fmt.Printf("this method goes further to directly control marshal/unmarshal on a specific struct \n")
+	fmt.Printf("go allows us to tag anything on a struct, such as the common json:xxx tag. \n")
+	fmt.Printf("we use reflection to find special tags, so that we can treat those special fields differntly during marshal/unmarshal operations \n")
+	fmt.Printf("in our case, we use 'lark' tag to denote some information should not be marshalled (and sent to the caller in json form) \n")
 }

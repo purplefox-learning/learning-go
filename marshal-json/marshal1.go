@@ -81,16 +81,20 @@ func main() {
 	}
 	fmt.Printf("marshalled json: %v \n\n", string(bjson))
 
+	bytes1 := []byte(`{"id":"0","name":"some_brand_name","products":["1","2","3","4","5"]}`) //id="0"	//`...multiline_supported`
 	unmarshalledB := &Brand1{}
-	json.Unmarshal(bjson, unmarshalledB)
-	fmt.Printf("unmarshalled structs: %v \n\n", unmarshalledB)
+	json.Unmarshal(bytes1, unmarshalledB)
+	fmt.Printf("unmarshalled successfully: %v \n\n", unmarshalledB)
+
+	bytes2 := []byte(`{"id":0,"name":"some_brand_name","products":["1","2","3","4","5"]}`) //id=0		//`...multiline_supported`
+	json.Unmarshal(bytes2, unmarshalledB)
+	fmt.Printf("unmarshalled successfully: %v \n\n", unmarshalledB)
+
 	for _, pid := range unmarshalledB.Products {
 		fmt.Printf("product id: %v \n", pid)
 	}
 
 	fmt.Printf("note that here we dont need the 'string' annotation as illustrated in marshal0.go \n")
-	fmt.Printf("all numbers marked as Int64Str are automatically encoded as strings")
-
-	fmt.Printf("annotating with string on an integer type enables us to convert a int field in its string format in marshalling \n")
+	fmt.Printf("all numbers marked as Int64Str are automatically encoded as strings, and decoded a string to int \n")
 	fmt.Printf("this method also support []int64 type well, both marshaling and unmarshaling \n")
 }
